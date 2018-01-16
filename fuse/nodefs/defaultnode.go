@@ -50,47 +50,47 @@ func (n *defaultNode) Lookup(out *fuse.Attr, name string, context *fuse.Context)
 }
 
 func (n *defaultNode) Access(mode uint32, context *fuse.Context) (code fuse.Status) {
-	return fuse.ENOSYS
+	return fuse.OK
 }
 
 func (n *defaultNode) Readlink(c *fuse.Context) ([]byte, fuse.Status) {
-	return nil, fuse.ENOSYS
+	return nil, fuse.EPERM
 }
 
 func (n *defaultNode) Mknod(name string, mode uint32, dev uint32, context *fuse.Context) (newNode *Inode, code fuse.Status) {
-	return nil, fuse.ENOSYS
+	return nil, fuse.EROFS
 }
 func (n *defaultNode) Mkdir(name string, mode uint32, context *fuse.Context) (newNode *Inode, code fuse.Status) {
-	return nil, fuse.ENOSYS
+	return nil, fuse.EROFS
 }
 func (n *defaultNode) Unlink(name string, context *fuse.Context) (code fuse.Status) {
-	return fuse.ENOSYS
+	return fuse.EPERM
 }
 func (n *defaultNode) Rmdir(name string, context *fuse.Context) (code fuse.Status) {
-	return fuse.ENOSYS
+	return fuse.EPERM
 }
 func (n *defaultNode) Symlink(name string, content string, context *fuse.Context) (newNode *Inode, code fuse.Status) {
-	return nil, fuse.ENOSYS
+	return nil, fuse.EROFS
 }
 
 func (n *defaultNode) Rename(oldName string, newParent Node, newName string, context *fuse.Context) (code fuse.Status) {
-	return fuse.ENOSYS
+	return fuse.EPERM
 }
 
 func (n *defaultNode) Link(name string, existing Node, context *fuse.Context) (newNode *Inode, code fuse.Status) {
-	return nil, fuse.ENOSYS
+	return nil, fuse.EROFS
 }
 
 func (n *defaultNode) Create(name string, flags uint32, mode uint32, context *fuse.Context) (file File, newNode *Inode, code fuse.Status) {
-	return nil, nil, fuse.ENOSYS
+	return nil, nil, fuse.EROFS
 }
 
 func (n *defaultNode) Open(flags uint32, context *fuse.Context) (file File, code fuse.Status) {
-	return nil, fuse.ENOSYS
+	return nil, fuse.EPERM
 }
 
 func (n *defaultNode) Flush(file File, openFlags uint32, context *fuse.Context) (code fuse.Status) {
-	return fuse.ENOSYS
+	return fuse.OK
 }
 
 func (n *defaultNode) OpenDir(context *fuse.Context) ([]fuse.DirEntry, fuse.Status) {
@@ -114,15 +114,15 @@ func (n *defaultNode) GetXAttr(attribute string, context *fuse.Context) (data []
 }
 
 func (n *defaultNode) RemoveXAttr(attr string, context *fuse.Context) fuse.Status {
-	return fuse.ENOSYS
+	return fuse.EPERM
 }
 
 func (n *defaultNode) SetXAttr(attr string, data []byte, flags int, context *fuse.Context) fuse.Status {
-	return fuse.ENOSYS
+	return fuse.EPERM
 }
 
 func (n *defaultNode) ListXAttr(context *fuse.Context) (attrs []string, code fuse.Status) {
-	return nil, fuse.ENOSYS
+	return nil, fuse.OK
 }
 
 func (n *defaultNode) GetAttr(out *fuse.Attr, file File, context *fuse.Context) (code fuse.Status) {
@@ -138,47 +138,47 @@ func (n *defaultNode) GetAttr(out *fuse.Attr, file File, context *fuse.Context) 
 }
 
 func (n *defaultNode) GetLk(file File, owner uint64, lk *fuse.FileLock, flags uint32, out *fuse.FileLock, context *fuse.Context) (code fuse.Status) {
-	return fuse.ENOSYS
+	return fuse.EPERM
 }
 
 func (n *defaultNode) SetLk(file File, owner uint64, lk *fuse.FileLock, flags uint32, context *fuse.Context) (code fuse.Status) {
-	return fuse.ENOSYS
+	return fuse.EPERM
 }
 
 func (n *defaultNode) SetLkw(file File, owner uint64, lk *fuse.FileLock, flags uint32, context *fuse.Context) (code fuse.Status) {
-	return fuse.ENOSYS
+	return fuse.EPERM
 }
 
 func (n *defaultNode) Chmod(file File, perms uint32, context *fuse.Context) (code fuse.Status) {
-	return fuse.ENOSYS
+	return fuse.EPERM
 }
 
 func (n *defaultNode) Chown(file File, uid uint32, gid uint32, context *fuse.Context) (code fuse.Status) {
-	return fuse.ENOSYS
+	return fuse.EPERM
 }
 
 func (n *defaultNode) Truncate(file File, size uint64, context *fuse.Context) (code fuse.Status) {
-	return fuse.ENOSYS
+	return fuse.EPERM
 }
 
 func (n *defaultNode) Utimens(file File, atime *time.Time, mtime *time.Time, context *fuse.Context) (code fuse.Status) {
-	return fuse.ENOSYS
+	return fuse.EPERM
 }
 
 func (n *defaultNode) Fallocate(file File, off uint64, size uint64, mode uint32, context *fuse.Context) (code fuse.Status) {
-	return fuse.ENOSYS
+	return fuse.EPERM
 }
 
 func (n *defaultNode) Read(file File, dest []byte, off int64, context *fuse.Context) (fuse.ReadResult, fuse.Status) {
 	if file != nil {
 		return file.Read(dest, off)
 	}
-	return nil, fuse.ENOSYS
+	return nil, fuse.EPERM
 }
 
 func (n *defaultNode) Write(file File, data []byte, off int64, context *fuse.Context) (written uint32, code fuse.Status) {
 	if file != nil {
 		return file.Write(data, off)
 	}
-	return 0, fuse.ENOSYS
+	return 0, fuse.EPERM
 }

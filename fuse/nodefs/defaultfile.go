@@ -30,23 +30,23 @@ func (f *defaultFile) String() string {
 }
 
 func (f *defaultFile) Read(buf []byte, off int64) (fuse.ReadResult, fuse.Status) {
-	return nil, fuse.ENOSYS
+	return nil, fuse.EPERM
 }
 
 func (f *defaultFile) Write(data []byte, off int64) (uint32, fuse.Status) {
-	return 0, fuse.ENOSYS
+	return 0, fuse.EPERM
 }
 
 func (f *defaultFile) GetLk(owner uint64, lk *fuse.FileLock, flags uint32,  out *fuse.FileLock) (code fuse.Status) {
-	return fuse.ENOSYS
+	return fuse.EPERM
 }
 
 func (f *defaultFile) SetLk(owner uint64, lk *fuse.FileLock, flags uint32) (code fuse.Status) {
-	return fuse.ENOSYS
+	return fuse.EPERM
 }
 
 func (f *defaultFile) SetLkw(owner uint64, lk *fuse.FileLock, flags uint32) (code fuse.Status) {
-	return fuse.ENOSYS
+	return fuse.EPERM
 }
 
 func (f *defaultFile) Flush() fuse.Status {
@@ -58,29 +58,29 @@ func (f *defaultFile) Release() {
 }
 
 func (f *defaultFile) GetAttr(*fuse.Attr) fuse.Status {
-	return fuse.ENOSYS
+	return fuse.EPERM
 }
 
 func (f *defaultFile) Fsync(flags int) (code fuse.Status) {
-	return fuse.ENOSYS
+	return fuse.EPERM
 }
 
 func (f *defaultFile) Utimens(atime *time.Time, mtime *time.Time) fuse.Status {
-	return fuse.ENOSYS
+	return fuse.EPERM
 }
 
 func (f *defaultFile) Truncate(size uint64) fuse.Status {
-	return fuse.ENOSYS
+	return fuse.EPERM
 }
 
 func (f *defaultFile) Chown(uid uint32, gid uint32) fuse.Status {
-	return fuse.ENOSYS
+	return fuse.EPERM
 }
 
 func (f *defaultFile) Chmod(perms uint32) fuse.Status {
-	return fuse.ENOSYS
+	return fuse.EPERM
 }
 
 func (f *defaultFile) Allocate(off uint64, size uint64, mode uint32) (code fuse.Status) {
-	return fuse.ENOSYS
+	return fuse.EPERM
 }
